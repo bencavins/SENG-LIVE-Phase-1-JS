@@ -65,6 +65,63 @@ const inventory = [
   }
 ]
 
+
+function helloWorld() {
+    console.log("Hello world")
+}
+
+// helloWorld()
+
+const myObj = {
+    id: 7,
+    title: 'Cracking the Coding Interview',
+    author: 'Gayle Laakmann McDowell',
+    price: 49.95,
+    reviews: [{userID: 99, content:'One of the most helpful books for taking on the tech interview'}, {userID: 20, content: 'Great but I just wish it was in JavaScript instead of Java' }],
+    inventory: 20,
+    imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/41oYsXjLvZL._SY344_BO1,204,203,200_.jpg'
+  }
+
+const x = 1
+
+function formatTitle(book) {
+    console.log(book.title)
+}
+
+function formatPrice(book) {
+    // const x = 4
+    // console.log(x)
+    const priceString = "$" + book.price
+    console.log(priceString)
+}
+
+
+
+function formatter(book, formatFunction) {
+    formatFunction(book)
+}
+
+// formatter(myObj, formatTitle)
+formatter(myObj, formatPrice)
+
+formatter(myObj, (book) => {
+    console.log(book.id)
+})
+
+
+// console.log(x)
+// console.log(priceString)
+
+// for (let book of inventory) {
+//     let x = 6
+//     // formatPrice(book)
+// }
+
+// console.log(x)
+
+
+
+
 // ✅ Function ideas:
 /*
 - helloWorld
@@ -105,11 +162,11 @@ function findHighestPricedBook() {
   return highestPriceBook;
 }
 
-console.log('highestPriceBook', highestPriceBook);
+// console.log('highestPriceBook', highestPriceBook);
 
 // highestPrice book is undefined until we call findHighestPricedBook()
 findHighestPricedBook(); 
-console.log('highestPriceBook', highestPriceBook);
+// console.log('highestPriceBook', highestPriceBook);
 
 // What is the problem with storing highestPriceBook as a global variable here? What would happen if we added another book of a higher price?
 
