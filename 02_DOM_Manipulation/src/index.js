@@ -1,9 +1,25 @@
 //BookStore has been moved to data.js 
-console.log(bookStore);
+// console.log(bookStore);
 
 function formatPrice(price) {
   return '$' + Number.parseFloat(price).toFixed(2);
 }
+
+const header = document.querySelector("#header2")
+header.textContent = 'some new text'
+
+const newH2 = document.createElement('h2')
+newH2.textContent = 'hello'
+console.log(newH2)
+
+const myDiv = document.querySelector('#my-div')
+myDiv.appendChild(newH2)
+
+// const h = document.getElementById("header2")
+// console.log(h)
+
+// const h2s = document.querySelectorAll('h2')
+// console.log(h2s)
 
 // create a function called renderBook(book)
 // it will take a book object as an argument
