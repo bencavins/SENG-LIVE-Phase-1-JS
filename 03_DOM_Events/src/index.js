@@ -55,6 +55,10 @@ function renderBook(book) {
   btn.textContent = 'Delete';
   li.append(btn);
 
+  btn.addEventListener('click', () => {
+    li.remove()
+  })
+
   document.querySelector('#book-list').append(li);
 }
 
@@ -67,3 +71,38 @@ renderHeader(bookStore);
 renderFooter(bookStore);
 bookStore.inventory.forEach(renderBook);
 
+
+function handleClick() {
+  const form = document.querySelector('#book-form')
+  if (form.className === 'collapsed') {
+    form.className = ""
+  } else {
+    form.className = 'collapsed'
+  }
+}
+
+const formButton = document.querySelector('#toggleForm')
+formButton.addEventListener('click', handleClick)
+
+
+function handleSubmit(event) {
+   event.preventDefault()
+   const form = event.target
+  //  console.log(form.title.value)
+  //  console.log(form.author.value)
+  //  console.log(form.price.value)
+  //  console.log(form.imageUrl.value)
+  //  console.log(form.inventory.value)
+  const newBook = {
+    'title': form.title.value,
+    'author': form.author.value,
+    'price': form.price.value,
+    'imageUrl': form.imageUrl.value,
+    'inventory': form.inventory.value
+  }
+  // console.log(newBook)
+  renderBook(newBook)
+}
+
+const form = document.querySelector('#book-form')
+form.addEventListener('submit', handleSubmit)
