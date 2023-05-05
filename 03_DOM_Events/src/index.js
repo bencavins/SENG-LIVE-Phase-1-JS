@@ -106,3 +106,5 @@ function handleSubmit(event) {
 
 const form = document.querySelector('#book-form')
 form.addEventListener('submit', handleSubmit)
+
+console.log(window.getComputedStyle(form).width)

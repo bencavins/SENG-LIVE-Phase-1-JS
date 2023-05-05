@@ -126,9 +126,32 @@ bookForm.addEventListener('submit', (e) => {
 // call render functions to populate the DOM
 ////////////////////////////////////////////
 
-renderHeader(bookStore)
-renderFooter(bookStore)
-bookStore.inventory.forEach(renderBook)
+// renderHeader(bookStore)
+// renderFooter(bookStore)
+// bookStore.inventory.forEach(renderBook)
+
+fetch("http://localhost:3000/stores")
+.then(resp => {
+  return resp.json()
+})
+.then(data => {
+  renderHeader(data[0])
+  renderFooter(data[0])
+})
+.catch((error) => {
+  console.log(error)
+})
+
+
+fetch("http://localhost:3000/books")
+.then((resp) => {
+  return resp.json()
+})
+.then((responseJson) => {
+  responseJson.forEach(renderBook)
+})
+// console.log('hello')
+
 
 
 

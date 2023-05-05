@@ -135,6 +135,24 @@
       ],
       "inventory": 20,
       "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/41oYsXjLvZL._SY344_BO1,204,203,200_.jpg"
+    },
+    {
+      "title": "12345678",
+      "author": "456789",
+      "price": 345678,
+      "reviews": [],
+      "inventory": 56789,
+      "imageUrl": "dfghjk45678i9",
+      "id": 8
+    },
+    {
+      "title": "hjkl",
+      "author": "hjkl",
+      "price": 8,
+      "reviews": [],
+      "inventory": null,
+      "imageUrl": "bjklhjk",
+      "id": 9
     }
   ]
 }

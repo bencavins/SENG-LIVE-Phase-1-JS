@@ -1,3 +1,6 @@
+// throw ('something')
+
+
 //////////////////////////////////////////////////////////
 // Fetch Data & Call render functions to populate the DOM
 //////////////////////////////////////////////////////////
@@ -220,10 +223,38 @@ bookForm.addEventListener('submit', (e) => {
   renderBook(book);
   // 1. Add the ability to perist the book to the database when the form is submitted. When this works, we should still see the book that is added to the DOM on submission when we refresh the page.
 
+  fetch("http://localhost:3000/books", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(book)
+  })
+  .then(resp => {
+    return resp.json()
+  })
+  .then(data => {
+    console.log(data)
+    // renderBook(book);
+  })
+
   e.target.reset();
 })
 
 // 2. Hook up the new Store form so it that it works to add a new store to our database and also to the DOM (as an option within the select tag)
+// const storeForm = document.querySelector('#store-form')
+storeForm.addEventListener('submit', (event) => {
+  event.preventDefault()
+
+  const newStore = {
+      "location": event.target.location.value,
+      "address": "333 st ne Seattle wa 99999",
+      "number": 9999999999,
+      "name": "Easley's Technical Books",
+      "hours": "Monday - Friday 9am - 6pm"
+  }
+})
+
 
 // we're filling in the storeForm with some data
 // for a new store programatically so we don't 
