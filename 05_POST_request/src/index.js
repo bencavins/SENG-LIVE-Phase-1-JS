@@ -245,14 +245,35 @@ bookForm.addEventListener('submit', (e) => {
 // const storeForm = document.querySelector('#store-form')
 storeForm.addEventListener('submit', (event) => {
   event.preventDefault()
-
+ 
   const newStore = {
       "location": event.target.location.value,
-      "address": "333 st ne Seattle wa 99999",
-      "number": 9999999999,
-      "name": "Easley's Technical Books",
-      "hours": "Monday - Friday 9am - 6pm"
+      "address": event.target.address.value,
+      "number": event.target.number.value,
+      "name": event.target.name.value,
+      "hours": event.target.hours.value
   }
+
+  fetch("http://localhost:3000/stores", {
+    method: "POST",
+    headers: {
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify(newStore)
+  })
+  .then(resp => {
+    return resp.json()
+  })
+  // .then(resp => resp.json())
+  .then(data => {
+
+    // call fetch again to get all the store data
+    fetch("http://localhost:3000/stores")
+    .then(resp => resp.json())
+    .then((stores) => {
+      renderStoreSelectionOptions(stores)
+    })
+  })
 })
 
 
