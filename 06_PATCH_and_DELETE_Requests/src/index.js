@@ -94,6 +94,20 @@ function renderBook(book) {
   inventoryInput.className = 'inventory-input';
   inventoryInput.value = book.inventory;
   inventoryInput.min = 0;
+  inventoryInput.addEventListener('change', (event) => {
+    fetch(`http://localhost:3000/books/${book.id}`, {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "inventory": Number.parseInt(event.target.value)
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+  })
+  
   li.append(inventoryInput);
   
   const pStock = document.createElement('p');
