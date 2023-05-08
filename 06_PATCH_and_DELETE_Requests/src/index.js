@@ -1,3 +1,5 @@
+let selectedStoreId;
+
 //////////////////////////////////////////////////////////
 // Fetch Data & Call render functions to populate the DOM
 //////////////////////////////////////////////////////////
@@ -43,6 +45,7 @@ function renderStoreSelectionOptions(stores) {
   stores.forEach(addSelectOptionForStore)
   // add a listener so that when the selection changes, we fetch that store's data from the server and load it into the DOM
   storeSelector.addEventListener('change', (e) => {
+    selectedStoreId = e.target.value
     getJSON(`http://localhost:3000/stores/${e.target.value}`)
       .then(store => {
         renderHeader(store);
@@ -289,7 +292,8 @@ storeForm.addEventListener('submit', (e) => {
   
   if (storeEditMode) {
     // ✅ write code for updating the store here
-    
+    // TODO send a patch req
+    fetch()
   } else {
     postJSON("http://localhost:3000/stores", store)
     .then(addSelectOptionForStore)
@@ -304,7 +308,7 @@ const editStoreBtn = document.querySelector('#edit-store');
 let storeEditMode = false;
 
 editStoreBtn.addEventListener('click', (e) => {
-  const selectedStoreId = document.querySelector('#store-selector').value;
+  selectedStoreId = document.querySelector('#store-selector').value;
   storeEditMode = true;
   getJSON(`http://localhost:3000/stores/${selectedStoreId}`)
     .then(populateStoreEditForm)
