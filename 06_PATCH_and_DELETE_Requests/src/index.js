@@ -116,7 +116,19 @@ function renderBook(book) {
   btn.textContent = 'Delete';
 
   btn.addEventListener('click', (e) => {
-    li.remove();
+    
+
+    // console.log(book)
+    fetch(`http://localhost:3000/books/${book.id}`, {
+      method: 'DELETE',
+    })
+    .then(resp => {
+      if (resp.ok) {
+        li.remove()
+      } else {
+        alert(resp.statusText)
+      }
+    })
   })
   li.append(btn);
 
